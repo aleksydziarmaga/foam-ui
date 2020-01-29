@@ -3,7 +3,7 @@ import Konva from 'konva';
 import { render } from 'react-dom';
 import { Stage, Layer, Star, Text } from 'react-konva';
 
-class App extends Component {
+class MainStage extends Component {
   handleDragStart = e => {
     e.target.setAttrs({
       shadowOffset: {
@@ -28,7 +28,7 @@ class App extends Component {
     return (
       <Stage width={window.innerWidth} height={window.innerHeight}>
         <Layer>
-          <Text text="Try to drag a star" />
+          
           {[...Array(10)].map((_, i) => (
             <Star
               key={i}
@@ -37,7 +37,7 @@ class App extends Component {
               numPoints={5}
               innerRadius={20}
               outerRadius={40}
-              fill="#89b717"
+              fill="#ED1B24"
               opacity={0.8}
               draggable
               rotation={Math.random() * 180}
@@ -54,4 +54,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default MainStage;
