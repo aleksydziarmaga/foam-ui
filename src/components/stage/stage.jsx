@@ -26,13 +26,13 @@ class MainStage extends Component {
   };
   render() {
     return (
-      <Stage width={window.innerWidth} height={window.innerHeight}>
+      <Stage width={window.innerWidth - 240} height={window.innerHeight}>
         <Layer>
           
-          {[...Array(10)].map((_, i) => (
+          {[...Array(10)].map(i => (
             <Star
               key={i}
-              x={Math.random() * window.innerWidth}
+              x={Math.random() * window.innerWidth - 240}
               y={Math.random() * window.innerHeight}
               numPoints={5}
               innerRadius={20}

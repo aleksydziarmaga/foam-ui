@@ -23,19 +23,6 @@ import Deposits from './Deposits';
 import Orders from './Orders';
 import Stage from '../stage/stage';
 
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
-
 const drawerWidth = 240;
 
 const useStyles = makeStyles(theme => ({
@@ -131,7 +118,7 @@ export default function Dashboard() {
   return (
     <div className={classes.root}>
       <CssBaseline />
-      <AppBar color="white" position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
+      <AppBar color="white" position="absolute" className={clsx(classes.appBar, true)}>
         <Toolbar className={classes.toolbar}>
           <IconButton
             edge="start"
@@ -143,7 +130,6 @@ export default function Dashboard() {
             <MenuIcon />
           </IconButton>
           <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-            {/* <img src="https://facom.com.pl/img/facomcompl-logo-15317536601.jpg" /> */}
             Dashboard
           </Typography>
         </Toolbar>
@@ -165,15 +151,10 @@ export default function Dashboard() {
         <Divider />
         <List>{secondaryListItems}</List>
       </Drawer>
-      <main className={classes.content}>
-        <div className={classes.appBarSpacer} />
-        <Container id="main-container" maxWidth="lg" className={classes.container}>
-          <Stage />
-          <Box pt={4}>
-            <Copyright />
-          </Box>
-        </Container>
-      </main>
+        
+      <Stage />
+        
+      
     </div>
   );
 }
