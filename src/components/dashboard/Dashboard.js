@@ -21,6 +21,7 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import { mainListItems, secondaryListItems } from './listItems';
 import Deposits from './Deposits';
 import Orders from './Orders';
+import Stage from '../stage/stage';
 
 function Copyright() {
   return (
@@ -171,7 +172,7 @@ export default function Dashboard() {
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
-          dndpanel goes
+          <Stage />
           <Box pt={4}>
             <Copyright />
           </Box>
