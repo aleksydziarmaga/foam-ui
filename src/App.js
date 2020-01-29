@@ -1,15 +1,9 @@
 import React from 'react';
-import Header from './components/Header';
-import Sidebar from './components/Sidebar';
-import FoamBuilder from './components/FoamBuilder';
+import Dashboard from './components/dashboard/Dashboard'
 
 function App() {
   return (
-    <div className="App">
-      {/* <Header />
-      <Sidebar /> */}
-      {/* <FoamBuilder /> */}
-    </div>
+    <Dashboard />
   );
 }
 
