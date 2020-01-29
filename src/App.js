@@ -6,9 +6,9 @@ import FoamBuilder from './components/FoamBuilder';
 function App() {
   return (
     <div className="App">
-      <Header />
-      <Sidebar />
-      <FoamBuilder />
+      {/* <Header />
+      <Sidebar /> */}
+      {/* <FoamBuilder /> */}
     </div>
   );
 }
