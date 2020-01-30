@@ -3,25 +3,18 @@ import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Drawer from '@material-ui/core/Drawer';
-import Box from '@material-ui/core/Box';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
-import Badge from '@material-ui/core/Badge';
-import Container from '@material-ui/core/Container';
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
-import Link from '@material-ui/core/Link';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import NotificationsIcon from '@material-ui/icons/Notifications';
 import { mainListItems, secondaryListItems } from './listItems';
-import Deposits from './Deposits';
-import Orders from './Orders';
 import Stage from '../stage/stage';
+
+import foamBackground from "./foamBackground.png"
 
 const drawerWidth = 240;
 
@@ -116,7 +109,7 @@ export default function Dashboard() {
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
   return (
-    <div className={classes.root}>
+    <div className={classes.root} style={ { backgroundImage: `url(${foamBackground})`, backgroundRepeat: true }}>
       <CssBaseline />
       <AppBar color="white" position="absolute" className={clsx(classes.appBar, true)}>
         <Toolbar className={classes.toolbar}>
@@ -130,7 +123,7 @@ export default function Dashboard() {
             <MenuIcon />
           </IconButton>
           <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-            Dashboard
+            <img src="https://facom.com.pl/img/facomcompl-logo-15317536601.jpg" />
           </Typography>
         </Toolbar>
       </AppBar>
@@ -152,7 +145,7 @@ export default function Dashboard() {
         <List>{secondaryListItems}</List>
       </Drawer>
         
-      <Stage />
+      <Stage className="main-stage-kek" backgroundColor="blue" backgroundImage={`url(${foamBackground})`} />
         
       
     </div>
