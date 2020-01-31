@@ -133,8 +133,12 @@ export default function Dashboard() {
       y: getRandomInt(100),
       width: 100,
       height: 100,
-      fill: "red",
+      fill: "#ed1b24",
       id: `circ${circles.length + 1}`,
+      shadowColor: 'black',
+      shadowBlur: 0,
+      shadowOffset: { x: 10, y: 10 },
+      shadowOpacity: 0.5
     };
     const circs = circles.concat([circ]);
     setCircles(circs)
@@ -146,8 +150,12 @@ export default function Dashboard() {
       y: getRandomInt(100),
       width: 100,
       height: 100,
-      fill: "red",
+      fill: "#ed1b24",
       id: `rec${rectangles.length + 1}`,
+      shadowColor: 'black',
+      shadowBlur: 0,
+      shadowOffset: { x: 10, y: 10 },
+      shadowOpacity: 0.5
     };
     const recs = rectangles.concat([rec]);
     setRectangles(recs)
@@ -157,8 +165,12 @@ export default function Dashboard() {
     const tri = {
       x: getRandomInt(100),
       y: getRandomInt(100),
-      fill: "red",
+      fill: "#ed1b24",
       id: `tri${rectangles.length + 1}`,
+      shadowColor: 'black',
+      shadowBlur: 0,
+      shadowOffset: { x: 10, y: 10 },
+      shadowOpacity: 0.5
     };
     const tris = rectangles.concat([tri]);
     setTriangles(tris)
