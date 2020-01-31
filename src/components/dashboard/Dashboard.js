@@ -172,6 +172,10 @@ export default function Dashboard() {
       height: 200,
       image: screwImg,
       id: `screw${screwdrivers.length + 1}`,
+      shadowColor: 'black',
+      shadowBlur: 0,
+      shadowOffset: { x: 10, y: 10 },
+      shadowOpacity: 0.5
     };
     const screws = screwdrivers.concat([screw]);
     setScrewdrivers(screws);
