@@ -37,6 +37,9 @@ const MainListItems = ({ handleFigureClick }) => {
           <ListItem button onClick={() => handleFigureClick('circle')}>
             <ListItemText primary="Circle" />
           </ListItem>
+          <ListItem button onClick={() => handleFigureClick('screwdriver')}>
+            <ListItemText primary="Screwdriver" />
+          </ListItem>
         </List>
       </Collapse>
       </List>

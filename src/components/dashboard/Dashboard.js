@@ -24,6 +24,7 @@ import Orders from './Orders';
 import Stage from '../stage/stage';
 
 import foamBackground from "./foamBackground.png"
+import screwImg from '../../images/srubo.png';
 
 const drawerWidth = 240;
 
@@ -112,6 +113,7 @@ export default function Dashboard() {
   const [circles, setCircles] = React.useState([]);
   const [rectangles, setRectangles] = React.useState([]);
   const [triangles, setTriangles] = React.useState([]);
+  const [screwdrivers, setScrewdrivers] = React.useState([]);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -162,6 +164,19 @@ export default function Dashboard() {
     setTriangles(tris)
   }
 
+  const addScrewdriver= () => {
+    const screw = {
+      x: getRandomInt(100),
+      y: getRandomInt(100),
+      width: 200,
+      height: 200,
+      image: screwImg,
+      id: `screw${screwdrivers.length + 1}`,
+    };
+    const screws = screwdrivers.concat([screw]);
+    setScrewdrivers(screws);
+  }
+
   const handleOnClick = (f) => {
     switch(f) {
       case 'circle': {
@@ -172,6 +187,9 @@ export default function Dashboard() {
       }
       case 'triangle': {
         return addTriangle();
+      }
+      case 'screwdriver': {
+        return addScrewdriver();
       }
       default: {
         return () => {};
@@ -214,7 +232,7 @@ export default function Dashboard() {
         <MainListItems handleFigureClick={handleOnClick}/>
       </Drawer>
         
-      <Stage circles={circles} rectangles={rectangles} triangles={triangles} />
+      <Stage circles={circles} rectangles={rectangles} triangles={triangles} screwdrivers={screwdrivers}/>
         
       
     </div>

@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import Konva from 'konva';
-import { render } from 'react-dom';
-import { Stage, Layer, Star, Text } from 'react-konva';
+import { Stage, Layer, Image } from 'react-konva';
 import Circle from '../shapes/Circle';
 import Rectangle from '../shapes/Rectangle';
 import Triangle from '../shapes/Triangle';
+import Tool from '../shapes/Tool';
 
 class MainStage extends Component {
   state = {
@@ -29,7 +29,6 @@ class MainStage extends Component {
   };
 
   render() {
-    console.log(this.props.circles);
     return (
       <Stage width={window.innerWidth - 240} height={window.innerHeight}>
         <Layer>
@@ -58,6 +57,16 @@ class MainStage extends Component {
               <Triangle
                 key={i}
                 shapeProps={triangle}
+                onDragStart={this.handleDragStart}
+                onDragEnd={this.handleDragEnd}
+              />
+            );
+          })}
+          {this.props.screwdrivers.map((screwdriver, i) => {
+            return (
+              <Tool
+                key={i}
+                shapeProps={screwdriver}
                 onDragStart={this.handleDragStart}
                 onDragEnd={this.handleDragEnd}
               />
