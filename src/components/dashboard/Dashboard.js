@@ -3,15 +3,24 @@ import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Drawer from '@material-ui/core/Drawer';
+import Box from '@material-ui/core/Box';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
+import Badge from '@material-ui/core/Badge';
+import Container from '@material-ui/core/Container';
+import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
+import Link from '@material-ui/core/Link';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import { mainListItems, secondaryListItems } from './listItems';
+import NotificationsIcon from '@material-ui/icons/Notifications';
+import MainListItems from './listItems';
+import Deposits from './Deposits';
+import Orders from './Orders';
 import Stage from '../stage/stage';
 
 import foamBackground from "./foamBackground.png"
@@ -100,6 +109,10 @@ const useStyles = makeStyles(theme => ({
 export default function Dashboard() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
+  const [circles, setCircles] = React.useState([]);
+  const [rectangles, setRectangles] = React.useState([]);
+  const [triangles, setTriangles] = React.useState([]);
+
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -107,6 +120,64 @@ export default function Dashboard() {
     setOpen(false);
   };
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
+
+  const getRandomInt = max => {
+    return Math.floor((Math.random() * Math.floor(max)) + 500);
+  };
+
+  const addCircle = () => {
+    const circ = {
+      x: getRandomInt(100),
+      y: getRandomInt(100),
+      width: 100,
+      height: 100,
+      fill: "red",
+      id: `circ${circles.length + 1}`,
+    };
+    const circs = circles.concat([circ]);
+    setCircles(circs)
+  };
+
+  const addRectangle = () => {
+    const rec = {
+      x: getRandomInt(100),
+      y: getRandomInt(100),
+      width: 100,
+      height: 100,
+      fill: "red",
+      id: `rec${rectangles.length + 1}`,
+    };
+    const recs = rectangles.concat([rec]);
+    setRectangles(recs)
+  };
+
+  const addTriangle = () => {
+    const tri = {
+      x: getRandomInt(100),
+      y: getRandomInt(100),
+      fill: "red",
+      id: `tri${rectangles.length + 1}`,
+    };
+    const tris = rectangles.concat([tri]);
+    setTriangles(tris)
+  }
+
+  const handleOnClick = (f) => {
+    switch(f) {
+      case 'circle': {
+        return addCircle();
+      }
+      case 'rectangle': {
+        return addRectangle();
+      }
+      case 'triangle': {
+        return addTriangle();
+      }
+      default: {
+        return () => {};
+      }
+    }
+  }
 
   return (
     <div className={classes.root} style={ { backgroundImage: `url(${foamBackground})`, backgroundRepeat: true }}>
@@ -139,13 +210,11 @@ export default function Dashboard() {
             <ChevronLeftIcon />
           </IconButton>
         </div>
-        <Divider />
-        <List>{mainListItems}</List>
-        <Divider />
-        <List>{secondaryListItems}</List>
+        <Divider/>
+        <MainListItems handleFigureClick={handleOnClick}/>
       </Drawer>
         
-      <Stage className="main-stage-kek" backgroundColor="blue" backgroundImage={`url(${foamBackground})`} />
+      <Stage circles={circles} rectangles={rectangles} triangles={triangles} />
         
       
     </div>

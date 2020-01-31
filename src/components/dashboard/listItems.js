@@ -1,53 +1,61 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import ListSubheader from '@material-ui/core/ListSubheader';
 import DashboardIcon from '@material-ui/icons/Dashboard';
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
-import PeopleIcon from '@material-ui/icons/People';
-import BarChartIcon from '@material-ui/icons/BarChart';
-import LayersIcon from '@material-ui/icons/Layers';
-import AssignmentIcon from '@material-ui/icons/Assignment';
+import Collapse from '@material-ui/core/Collapse';
+import List from '@material-ui/core/List';
+import StarBorder from '@material-ui/icons/StarBorder';
 
-export const mainListItems = (
-  <div>
-    <ListItem button>
-      <ListItemIcon>
+const MainListItems = ({ handleFigureClick }) => {
+  const [open, setOpen] = useState(true);
+
+  const handleClick = () => {
+    setOpen(!open);
+  };
+
+  
+  return (
+    <List
+      component="nav"
+      aria-labelledby="nested-list-subheader"
+    >
+    <ListItem button onClick={handleClick}>
+        <ListItemIcon>
         <DashboardIcon />
-      </ListItemIcon>
-      <ListItemText primary="Shapes" />
+        </ListItemIcon>
+        <ListItemText primary="Shapes" />
     </ListItem>
-    <ListItem button>
-      <ListItemIcon>
-        <ShoppingCartIcon />
-      </ListItemIcon>
-      <ListItemText primary="Settings" />
-    </ListItem>
-  </div>
-);
+      <Collapse in={open} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItem button onClick={() => handleFigureClick('triangle')}>
+            <ListItemText primary="Triangle" />
+          </ListItem>
+          <ListItem button  onClick={() => handleFigureClick('rectangle')}>
+            <ListItemText primary="Rectangle"/>
+          </ListItem>
+          <ListItem button onClick={() => handleFigureClick('circle')}>
+            <ListItemText primary="Circle" />
+          </ListItem>
+        </List>
+      </Collapse>
+      </List>
+  );
+}
 
-export const secondaryListItems = (
-  <div>
-    {/* https://banner2.cleanpng.com/20171202/ed0/hammer-png-clipart-5a224a5994a822.8993489915121966976089.jpg */}
-    <ListSubheader inset>Others</ListSubheader>
-    <ListItem button>
-      <ListItemIcon>
-        <AssignmentIcon />
-      </ListItemIcon>
-      <ListItemText primary="About" />
-    </ListItem>
-    <ListItem button>
-      <ListItemIcon>
-        <AssignmentIcon />
-      </ListItemIcon>
-      <ListItemText primary="Profile" />
-    </ListItem>
-    <ListItem button>
-      <ListItemIcon>
-        <AssignmentIcon />
-      </ListItemIcon>
-      <ListItemText primary="Logout" />
-    </ListItem>
-  </div>
-);
+// export const mainListItems = (
+//   <div>
+//     <ListItem button>
+//       <ListItemIcon>
+//         <DashboardIcon />
+//       </ListItemIcon>
+//       <ListItemText primary="Shapes" />
+//     </ListItem>
+//     <ListItem button>
+//       <ListItemIcon>
+//         <ShoppingCartIcon />
+//       </ListItemIcon>
+//       <ListItemText primary="Settings" />
+//     </ListItem>
+//   </div>
+export default MainListItems;
